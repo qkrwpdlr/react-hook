@@ -7,11 +7,16 @@ import "./App.css";
 function App() {
   const [item, setItem] = useState(1);
   const incrementItem = () => setItem(item + 1);
+  const maxLen = value => value.length < 10;
+  const name = useInput("Mr..", maxLen);
   return (
     <div className="App">
       <TestComponent />
       <h1>hello world{item}</h1>
       <button onClick={incrementItem}>incrementItem</button>
+
+      <input placeholder="" {...name} />
+      {/* <input onChange={useInput.onChange} /> 와 같이 게속 적을 필요 없다.*/}
     </div>
   );
 }
@@ -31,14 +36,31 @@ class TestComponent extends React.Component {
       </div>
     );
   }
-  incrementItem = ()=>{
-    console.log(this)
+  incrementItem = () => {
+    console.log(this);
     this.setState(state => {
       return {
         item: (state.item += 1)
       };
     });
-  }
+  };
 }
+
+const useInput = (initialValue, valiatior) => {
+  const [value, setValue] = useState(initialValue);
+  const onChange = e => {
+    const {
+      target: { value }
+    } = e;
+    let willUpdate = true;
+    if (typeof valiatior == "function") {
+      willUpdate = valiatior(value);
+    }
+    if (willUpdate) {
+      setValue(value);
+    }
+  };
+  return { value, onChange };
+};
 
 export default App;
