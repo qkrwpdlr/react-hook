@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-
+import UseTabs from "./useTabs"
 /**
  * functional component
  */
@@ -8,10 +8,12 @@ function App() {
   const [item, setItem] = useState(1);
   const incrementItem = () => setItem(item + 1);
   const maxLen = value => value.length < 10;
+  // const maxLen = value => !value.includes("@");
   const name = useInput("Mr..", maxLen);
   return (
     <div className="App">
       <TestComponent />
+      <UseTabs />
       <h1>hello world{item}</h1>
       <button onClick={incrementItem}>incrementItem</button>
 
