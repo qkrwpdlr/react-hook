@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
-import UseTabs from "./useTabs"
+import UseTabs from "./useTabs";
+import UseEffect from "./useEffect";
 /**
  * functional component
  */
@@ -13,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <TestComponent />
+      <UseEffect />
       <UseTabs />
       <h1>hello world{item}</h1>
       <button onClick={incrementItem}>incrementItem</button>
