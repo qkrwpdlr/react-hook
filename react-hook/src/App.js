@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./App.css";
 import UseTabs from "./useTabs";
 import UseEffect from "./useEffect";
+import UsePreventLeave from "./usePreventLeave";
+// import UseConfirm from "./useConfirm";
 /**
  * functional component
  */
@@ -15,7 +17,9 @@ function App() {
     <div className="App">
       <TestComponent />
       <UseEffect />
+      <UsePreventLeave />
       <UseTabs />
+      {/* <UseConfirm /> */}
       <h1>hello world{item}</h1>
       <button onClick={incrementItem}>incrementItem</button>
 
