@@ -16,7 +16,9 @@ const App = () => {
   setTimeout(() => {
     ref.current.focus();
   }, 2000);
-  const title = useClick();
+  const title = useClick(() => {
+    console.log("hi");
+  });
   return (
     <div>
       <input ref={ref} />
@@ -40,7 +42,7 @@ const useClick = onclick => {
   const elem = useRef();
   useEffect(() => {
     if (elem.current) {
-      elem.current.addEventListener("click", onClick);
+      elem.current.addEventListener("click", onclick);
     }
   });
   return elem;
